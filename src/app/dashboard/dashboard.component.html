@@ -1,0 +1,50 @@
+<div class="dashboard-container">
+  <h2>Dashboard</h2>
+
+  <div class="section">
+    <h3>Projetos</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Descrição</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let projeto of projetos">
+          <td>{{ projeto.id }}</td>
+          <td>{{ projeto.nome }}</td>
+          <td>{{ projeto.descricao }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Atividades</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Projeto</th>
+          <th>Horas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let atividade of atividades">
+          <td>{{ atividade.id }}</td>
+          <td>{{ atividade.nome }}</td>
+          <td>{{ getProjetoNome(atividade.projetoId) }}</td>
+          <td>{{ atividade.horas }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <h3>Horas Trabalhadas</h3>
+    <canvas id="horasTrabalhadasChart"></canvas>
+  </div>
+</div>

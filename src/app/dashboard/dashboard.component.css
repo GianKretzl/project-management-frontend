@@ -1,0 +1,29 @@
+.dashboard-container {
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+h2, h3 {
+  color: #2c3e50;
+}
