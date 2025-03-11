@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-<<<<<<< HEAD
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -9,15 +8,24 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   imports: [FormsModule]
-=======
-
-@Component({
-  selector: 'app-register',
-  imports: [],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
->>>>>>> 4b21471d46eee6e6e4bf53ea55e343359b44619f
 })
 export class RegisterComponent {
+  username: string = '';
+  email: string = '';
+  password: string = '';
+  role: string = 'USER';
 
+  constructor(private router: Router) {}
+
+  onSubmit() {
+    // Simulação de registro de usuário
+    console.log('Usuário registrado com sucesso:', {
+      username: this.username,
+      email: this.email,
+      password: this.password,
+      role: this.role
+    });
+    alert('Cadastro realizado com sucesso!');
+    this.router.navigate(['/login']);
+  }
 }
