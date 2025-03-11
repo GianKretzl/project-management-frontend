@@ -1,0 +1,37 @@
+<div class="lancamentos-container">
+  <h2>Lançamento de Horas</h2>
+
+  <form (ngSubmit)="lancarHoras()">
+    <div class="form-group">
+      <label for="atividade">Atividade:</label>
+      <select id="atividade" [(ngModel)]="novoLancamento.atividadeId" name="atividade" required>
+        <option *ngFor="let atividade of atividades" [value]="atividade.id">{{ atividade.nome }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="horas">Horas Trabalhadas:</label>
+      <input type="number" id="horas" [(ngModel)]="novoLancamento.horas" name="horas" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Lançar</button>
+  </form>
+
+  <h3>Horas Lançadas</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Atividade</th>
+        <th>Horas</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let lancamento of lancamentos">
+        <td>{{ lancamento.id }}</td>
+        <td>{{ getAtividadeNome(lancamento.atividadeId) }}</td>
+        <td>{{ lancamento.horas }}</td>
+        <td>{{ lancamento.data | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

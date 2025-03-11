@@ -1,0 +1,51 @@
+<div class="atividades-container">
+  <h2>Atividades</h2>
+
+  <button (click)="novaAtividade()">Nova Atividade</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Projeto</th>
+        <th>Horas</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let atividade of atividades">
+        <td>{{ atividade.id }}</td>
+        <td>{{ atividade.nome }}</td>
+        <td>{{ getProjetoNome(atividade.projetoId) }}</td>
+        <td>{{ atividade.horas }}</td>
+        <td>
+          <button (click)="editarAtividade(atividade)">Editar</button>
+          <button (click)="excluirAtividade(atividade.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="editandoAtividade">
+    <h3>{{ editandoAtividade.id ? 'Editar Atividade' : 'Nova Atividade' }}</h3>
+    <form (ngSubmit)="salvarAtividade()">
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" [(ngModel)]="editandoAtividade.nome" name="nome" required>
+      </div>
+      <div class="form-group">
+        <label for="projetoId">Projeto:</label>
+        <select id="projetoId" [(ngModel)]="editandoAtividade.projetoId" name="projetoId" required>
+          <option *ngFor="let projeto of projetos" [value]="projeto.id">{{ projeto.nome }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="horas">Horas:</label>
+        <input type="number" id="horas" [(ngModel)]="editandoAtividade.horas" name="horas" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+      <button type="button" (click)="cancelarEdicao()">Cancelar</button>
+    </form>
+  </div>
+</div>

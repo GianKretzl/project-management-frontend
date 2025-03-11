@@ -1,0 +1,57 @@
+<div class="relatorios-container">
+  <h2>Relatórios</h2>
+
+  <form (ngSubmit)="gerarRelatorio()">
+    <div class="form-group">
+      <label for="projeto">Projeto:</label>
+      <select id="projeto" [(ngModel)]="filtros.projetoId" name="projeto">
+        <option value="">Todos</option>
+        <option *ngFor="let projeto of projetos" [value]="projeto.id">{{ projeto.nome }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="atividade">Atividade:</label>
+      <select id="atividade" [(ngModel)]="filtros.atividadeId" name="atividade">
+        <option value="">Todas</option>
+        <option *ngFor="let atividade of atividades" [value]="atividade.id">{{ atividade.nome }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="usuario">Usuário:</label>
+      <select id="usuario" [(ngModel)]="filtros.usuarioId" name="usuario">
+        <option value="">Todos</option>
+        <option *ngFor="let usuario of usuarios" [value]="usuario.id">{{ usuario.nome }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="periodo">Período:</label>
+      <input type="date" id="dataInicio" [(ngModel)]="filtros.dataInicio" name="dataInicio">
+      <input type="date" id="dataFim" [(ngModel)]="filtros.dataFim" name="dataFim">
+    </div>
+    <button type="submit" class="btn btn-primary">Gerar Relatório</button>
+  </form>
+
+  <h3>Resultados</h3>
+  <table *ngIf="relatorio.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Projeto</th>
+        <th>Atividade</th>
+        <th>Usuário</th>
+        <th>Horas</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of relatorio">
+        <td>{{ item.id }}</td>
+        <td>{{ getProjetoNome(item.projetoId) }}</td>
+        <td>{{ getAtividadeNome(item.atividadeId) }}</td>
+        <td>{{ getUsuarioNome(item.usuarioId) }}</td>
+        <td>{{ item.horas }}</td>
+        <td>{{ item.data | date }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
