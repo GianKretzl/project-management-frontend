@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Chart, registerables } from 'chart.js';
-import { CommonModule } from '@angular/common';  // Importação do CommonModule
+import { CommonModule } from '@angular/common';
 
 interface Projeto {
   id: number;
@@ -21,7 +21,7 @@ interface Atividade {
   standalone: true,
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  imports: [HttpClientModule, CommonModule]  // Adicione CommonModule nos imports
+  imports: [HttpClientModule, CommonModule]
 })
 export class DashboardComponent implements OnInit {
   projetos: Projeto[] = [];
